@@ -11,9 +11,11 @@ import UIKit
 class DeliveryViewController: UIViewController {
 //IBOutlets
     
-    @IBAction func tapSaveData(_ sender: Any) {
-    }
+    /*@IBAction func tapSaveData(_ sender: Any) {
+        
+    }*/
     @IBOutlet weak var saveDelivery: UIButton!
+  
     @IBOutlet weak var deliveryTableView: UITableView!
     var deliveryData = ["Client Name","Phone","Email","order Id","Address","Deliver Before","Description","Barcode"]
     var imageData = [UIImage(named: "name"),
@@ -26,10 +28,12 @@ class DeliveryViewController: UIViewController {
                      UIImage(named: "Barcoad")
         
     ]
+   // var imageData = ["name","call","gmail","OrderId","address","Date","Description","Barcoad"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         deliveryTableView.rowHeight = 75
+        
 
         // Do any additional setup after loading the view.
     }
@@ -53,8 +57,12 @@ extension DeliveryViewController : UITabBarDelegate, UITableViewDataSource
         else
         {
         cell.cellTextField.placeholder = deliveryData[indexPath.row]
-        cell.imageView?.image = imageData[indexPath.row]
+        cell.cellImageView.image = imageData[indexPath.row]
+      // cell.imageView?.image = imageData[indexPath.row]
         }
         return cell
+    }
+    @IBAction func tapSaveData(_ sender: Any) {
+        
     }
 }

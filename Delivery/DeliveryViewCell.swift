@@ -10,9 +10,11 @@ import UIKit
 
 class DeliveryViewCell: UITableViewCell {
 
+    @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
+        cellTextField.borderStyle = .none
         // Initialization code
     }
 
