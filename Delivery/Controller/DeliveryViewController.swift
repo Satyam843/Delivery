@@ -15,7 +15,17 @@ class DeliveryViewController: UIViewController {
     }
     @IBOutlet weak var saveDelivery: UIButton!
     @IBOutlet weak var deliveryTableView: UITableView!
-    var deliveryData = ["Client Name","Phone","Email","order Id","Address","Deliver Before","Description","Barcode","Image"]
+    var deliveryData = ["Client Name","Phone","Email","order Id","Address","Deliver Before","Description","Barcode"]
+    var imageData = [UIImage(named: "name"),
+                     UIImage(named: "call"),
+                     UIImage(named: "gmail"),
+                     UIImage(named: "OrderId"),
+                     UIImage(named: "address"),
+                     UIImage(named: "Date"),
+                     UIImage(named: "Description"),
+                     UIImage(named: "Barcoad")
+        
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +42,19 @@ extension DeliveryViewController : UITabBarDelegate, UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deliveryData.count
+        return deliveryData.count+1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = deliveryTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DeliveryViewCell
+        if(indexPath.row == 8)
+        {
+            cell.cellTextField.placeholder = "Image"
+        }
+        else
+        {
         cell.cellTextField.placeholder = deliveryData[indexPath.row]
+        cell.imageView?.image = imageData[indexPath.row]
+        }
         return cell
     }
 }
