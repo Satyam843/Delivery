@@ -7,11 +7,16 @@
 //
 
 import UIKit
-
+/*protocol Delivery {
+    func OnClick(index : Int)
+}*/
 class DeliveryViewCell: UITableViewCell {
 
+   
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellTextField: UITextField!
+   // var celldelegate : Delivery?
+   // var index : IndexPath?
     override func awakeFromNib() {
         super.awakeFromNib()
         cellTextField.borderStyle = .none
@@ -23,5 +28,9 @@ class DeliveryViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+  /*  @objc func donePressed(_ sender : Any)
+    {
+        celldelegate?.OnClick(index: index!.row)
+    }*/
 
 }

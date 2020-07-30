@@ -8,14 +8,14 @@
 
 import UIKit
 
-class DeliveryViewController: UIViewController {
+class DeliveryViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 //IBOutlets
     
     /*@IBAction func tapSaveData(_ sender: Any) {
         
     }*/
     @IBOutlet weak var saveDelivery: UIButton!
-  
+
     @IBOutlet weak var deliveryTableView: UITableView!
     var deliveryData = ["Client Name","Phone","Email","order Id","Address","Deliver Before","Description","Barcode"]
     private var datePicker : UIDatePicker?
@@ -38,11 +38,6 @@ class DeliveryViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-
-}
-extension DeliveryViewController : UITabBarDelegate, UITableViewDataSource
-{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -54,21 +49,6 @@ extension DeliveryViewController : UITabBarDelegate, UITableViewDataSource
         if(indexPath.row == 8)
         {
             cell.cellTextField.placeholder = "Image"
-        }else if(indexPath.row==5)
-        {
-            datePicker = UIDatePicker()
-            datePicker?.datePickerMode = .date
-            datePicker?.addTarget(self, action: #selector(DeliveryViewController.dateChanged(_ :)), for: .valueChanged)
-           /* func dateChanged(datePicker : UIDatePicker)
-            {
-                let dateFormatter = DateFormatter()
-                DateFormatter.dateFormat(fromTemplate: "MM/dd/yyyy", options: .init(), locale: .none)
-                cell.cellTextField.text = dateFormatter.string(from: datePicker.date)
-                view.endEditing(true)
-            }*/
-            cell.cellTextField.text = deliveryData[indexPath.row]
-            cell.cellImageView.image = imageData[indexPath.row]
-            cell.cellTextField.inputView = datePicker
         }
        
         else
@@ -77,18 +57,6 @@ extension DeliveryViewController : UITabBarDelegate, UITableViewDataSource
             cell.cellImageView.image = imageData[indexPath.row]
         }
         return cell
-       
-    }
-   
-  
-    @IBAction func tapSaveData(_ sender: Any) {
         
-    }
-    @objc func dateChanged(_ sender: UIDatePicker) {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: sender.date)
-        if let day = components.day, let month = components.month, let year = components.year {
-        
-           // print("\(day) \(month) \(year)")
-        }
     }
 }
